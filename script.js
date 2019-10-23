@@ -5,4 +5,10 @@ var pwdPoss = {special_chars: ["@","!","#","$","%","&","+","?","<",">","^",":","
 
 var pwdkeys = ["special_chars","num_chars","lower_chars","upper_chars"];
 
+var scPrompt = prompt("How many characters would you like your password to have?");
+var ncPrompt = prompt("Would you like to have numbers in your password?");
+var lwPrompt = prompt("Would you like to have lowercase letters in your password?");
+var upPrompt = prompt("Would you like to have uppercase letters in your password?");
+
 console.log(pwdPoss[pwdkeys[0]][1]);
+console.log(parseInt(scPrompt));
