@@ -7,27 +7,50 @@ var pwdPoss = {
 
 var pwdkeys = ["special_chars", "num_chars", "lower_chars", "upper_chars"];
 
+var scPrompt;
+var ncPrompt;
+var lwPrompt;
+var upPrompt;
+
 var prompts = {
-  scPrompt: prompt("How many characters would you like your password to have?"),
-  ncPrompt: prompt("Would you like to have numbers in your password? Enter Y for Yes, and N for No."),
-  lwPrompt: prompt("Would you like to have lowercase letters in your password? Enter Y for Yes, and N for No."),
-  upPrompt: prompt("Would you like to have uppercase letters in your password? Enter Y for Yes, and N for No.")
-};
-// var ;
-// var ;
+  scFunc: function() {
+    scPrompt = parseInt(prompt("How many characters would you like your password to have?"),10);
 
-// console.log(pwdPoss[pwdkeys[0]][1]);
-// console.log(parseInt(scPrompt));
+    while (Number.isInteger(parseInt(scPrompt)) === false) {
+      alert("Your entry is not a number. Please enter a number");
+      scPrompt = parseInt(prompt("How many characters would you like your password to have?"),10);
+    }},
 
-function correctInput() {
+  ncFunc: function() {
+    ncPrompt = prompt("Would you like to have numbers in your password? Enter Y for Yes, and N for No.");
+  },
 
-  while (Number.isInteger(parseInt(prompts.scPrompt)) === false) {
-    alert("Your entry is not a number. Please enter a number");
-    prompts.scPrompt = parseInt(prompt("How many characters would you like your password to have?"));
+  lwFunc: function() {
+    lwPrompt = prompt("Would you like to have lowercase letters in your password? Enter Y for Yes, and N for No.");
+  },
+
+  upFunc: function () {
+    upPrompt = prompt("Would you like to have uppercase letters in your password? Enter Y for Yes, and N for No.");
   }
-}
+
+};
+
+prompts.scFunc();
+prompts.ncFunc();
 
 
 
-correctInput();
-scPrompt;
+
+// for (var i = 1; i < Object.keys(prompts).length; i++) {
+//
+//   var nc_lw_up_prompts = Object.keys(prompts)[i];
+//   // prompts[nc_lw_up_prompts]();
+//
+//   while (prompts[nc_lw_up_prompts]() === "Y" || prompts[nc_lw_up_prompts]() === "N") {
+//     alert("Invalid Entry.Your entry must be a Y for Yes, or N for No. Please try again.");
+//     // prompts[nc_lw_up_prompts]();
+//   }
+//
+// }
+
+// console.log(Object.keys(prompts).length);
