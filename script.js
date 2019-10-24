@@ -17,7 +17,7 @@ var prompts = {
     scPrompt = parseInt(prompt("How many characters would you like your password to have?"),10);
 
     while (Number.isInteger(parseInt(scPrompt)) === false) {
-      alert("Your entry is not a number. Please enter a number");
+      alert("Your entry is invalid. Please enter a number");
       scPrompt = parseInt(prompt("How many characters would you like your password to have?"),10);
     }},
 
@@ -36,21 +36,29 @@ var prompts = {
 };
 
 prompts.scFunc();
-prompts.ncFunc();
+// prompts.ncFunc();
+
+for (var i = 1; i < Object.keys(prompts).length; i++) {
+
+  var nc_lw_up_prompts = Object.keys(prompts)[i];
+
+  prompts[nc_lw_up_prompts]();
+
+  var promptArray = [scPrompt,ncPrompt,lwPrompt,upPrompt];
+
+    // while (promptArray[i] !== "Y" || promptArray[i] !== "N") {
+    //   alert("Invalid Entry.Your entry must be a Y for Yes, or N for No. Please try again.");
+    //
+    //   // if (promptArray.indexOf(ncPrompt) === 1) {
+    //   //   ncPrompt = prompt("Would you like to have numbers in your password? Enter Y for Yes, and N for No.");
+    //   // } else if (promptArray.indexOf(lwPrompt) === 2) {
+    //   //   lwPrompt = prompt("Would you like to have lowercase letters in your password? Enter Y for Yes, and N for No.");
+    //   // } else if (promptArray.indexOf(upPrompt) === 3) {
+    //   //   upPrompt = prompt("Would you like to have uppercase letters in your password? Enter Y for Yes, and N for No.");
+    //   // }
+    // }
 
 
-
-
-// for (var i = 1; i < Object.keys(prompts).length; i++) {
-//
-//   var nc_lw_up_prompts = Object.keys(prompts)[i];
-//   // prompts[nc_lw_up_prompts]();
-//
-//   while (prompts[nc_lw_up_prompts]() === "Y" || prompts[nc_lw_up_prompts]() === "N") {
-//     alert("Invalid Entry.Your entry must be a Y for Yes, or N for No. Please try again.");
-//     // prompts[nc_lw_up_prompts]();
-//   }
-//
-// }
+}
 
 // console.log(Object.keys(prompts).length);
