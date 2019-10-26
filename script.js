@@ -20,10 +20,15 @@ function generatePassword() {
 
   var prompts = {
     quFunc: function() {
-      quPrompt = parseInt(prompt("How many characters would you like your password to have?"), 10);
+      quPrompt = parseInt(prompt("How many characters would you like your password to have? Enter a number between 8 and 128."), 10);
 
       while (Number.isInteger(parseInt(quPrompt)) === false) {
-        alert("Your entry is invalid. Please enter a number");
+        alert("Your entry is invalid. Please enter a number.");
+        quPrompt = parseInt(prompt("How many characters would you like your password to have?"), 10);
+      }
+
+      while (quPrompt < 8 || quPrompt > 128) {
+        alert("Your entry is invalid. Enter a number between 8 and 128. Please try again.");
         quPrompt = parseInt(prompt("How many characters would you like your password to have?"), 10);
       }
     },
@@ -113,7 +118,6 @@ genPwd.addEventListener("click", function(event) {
   document.getElementById("copyAlert").value = "";
 
   generatePassword();
-  // textPwd.innerText = newPwd;
   textPwd.value = newPwd;
 });
 
