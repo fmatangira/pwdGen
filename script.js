@@ -38,7 +38,7 @@ var prompts = {
     return lwPrompt;
   },
 
-  upFunc: function () {
+  upFunc: function() {
     upPrompt = prompt("Would you like to have uppercase letters in your password? Enter Y for Yes, and N for No.");
     return upPrompt;
   }
@@ -58,17 +58,56 @@ for (var i = 1; i < Object.keys(prompts).length; i++) {
 
   var userInput = prompts[sc_nc_lw_up_prompts]();
 
-  promptArray.push(userInput);
+  promptArray.push(userInput.toLowerCase());
 
   console.log(promptArray);
 
-  while (promptArray[i].toLowerCase() !== "y" && promptArray[i].toLowerCase() !== "n") {
+  while (promptArray[i] !== "y" && promptArray[i] !== "n") {
 
       alert("Invalid Entry. Your entry must be a Y for Yes, or N for No. Please try again.");
       promptArray.pop();
       userInput = prompts[sc_nc_lw_up_prompts]();
-      promptArray.push(userInput);
+      promptArray.push(userInput.toLowerCase());
 
   }
 
 }
+
+// CREATE ARRAY FOR PASSWORD CHARACTER POSSIBILITIES BASED ON USER INPUT FROM PROMPTS
+var pwdArray = [];
+
+// CREATE FUNCTIONS TO PUSH ARRAYS FROM LINES 2-5 INTO pwdArray
+var pwdChoice = {
+
+  special_chars: function() {
+    if (promptArray[1] === "y") {
+      Array.prototype.push.apply(pwdArray, pwdPoss.special_chars);
+    }
+  },
+
+  num_chars: function() {
+    if (promptArray[2] === "y") {
+      Array.prototype.push.apply(pwdArray, pwdPoss.num_chars);
+    }
+  },
+
+  lower_chars: function() {
+    if (promptArray[3] === "y") {
+      Array.prototype.push.apply(pwdArray, pwdPoss.lower_chars);
+    }
+  },
+
+  upper_chars: function() {
+    if (promptArray[4] === "y") {
+      Array.prototype.push.apply(pwdArray, pwdPoss.upper_chars);
+    }
+  }
+};
+
+// RUN ABOVE FUNCTIONS
+pwdChoice.special_chars();
+pwdChoice.num_chars();
+pwdChoice.lower_chars();
+pwdChoice.upper_chars();
+
+console.log(pwdArray);
