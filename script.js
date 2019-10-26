@@ -117,7 +117,12 @@ var pwdGen = [];
 
 // LOOP THROUGH pwdArray AND PUT THE RANDOM CHOSEN CHARACTERS IN pwdGen
 for (var i = 0; i < promptArray[0]; i++) {
-  pwdChar = pwdArray[Math.floor(Math.random()*(pwdArray.length+1))];
+  pwdChar = pwdArray[Math.floor(Math.random()*(pwdArray.length))];
   pwdGen.push(pwdChar);
   console.log(pwdGen);
 }
+
+var newPwd = pwdGen.join("");
+
+alert(newPwd);
+console.log(newPwd);
