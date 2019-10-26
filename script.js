@@ -111,3 +111,13 @@ pwdChoice.lower_chars();
 pwdChoice.upper_chars();
 
 console.log(pwdArray);
+
+// CREATE ARRAY WHERE FINAL PASSWORD WILL GENERATE INTO
+var pwdGen = [];
+
+// LOOP THROUGH pwdArray AND PUT THE RANDOM CHOSEN CHARACTERS IN pwdGen
+for (var i = 0; i < promptArray[0]; i++) {
+  pwdChar = pwdArray[Math.floor(Math.random()*(pwdArray.length+1))];
+  pwdGen.push(pwdChar);
+  console.log(pwdGen);
+}
