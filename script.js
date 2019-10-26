@@ -7,6 +7,7 @@ var pwdPoss = {
 
 var pwdkeys = ["special_chars", "num_chars", "lower_chars", "upper_chars"];
 
+// SET UP THE PROMPTS
 var quPrompt;
 var scPrompt;
 var ncPrompt;
@@ -44,12 +45,13 @@ var prompts = {
 
 };
 
+// CALL QUANTITY FUNCTION
 prompts.quFunc();
 
+// CREATE ARRAY WHERE PROMPT INPUTS WILL BE STORED
 var promptArray = [quPrompt];
 
-console.log(promptArray);
-
+// CREATE LOOP THAT VALIDATES "Y" OR "N" FOR THE RESET OF THE PROMPTS
 for (var i = 1; i < Object.keys(prompts).length; i++) {
 
   var sc_nc_lw_up_prompts = Object.keys(prompts)[i];
