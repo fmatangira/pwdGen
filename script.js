@@ -1,4 +1,5 @@
 var newPwd;
+var pwdkeys;
 
 function generatePassword() {
   var pwdPoss = {
@@ -8,7 +9,7 @@ function generatePassword() {
     upper_chars: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
   };
 
-  var pwdkeys = ["special_chars", "num_chars", "lower_chars", "upper_chars"];
+  pwdkeys = ["special_chars", "num_chars", "lower_chars", "upper_chars"];
 
   // SET UP THE PROMPTS
   var quPrompt;
@@ -79,38 +80,15 @@ function generatePassword() {
   var pwdArray = [];
 
   // CREATE FUNCTIONS TO PUSH ARRAYS FROM LINES 2-5 INTO pwdArray
-  var pwdChoice = {
-
-    special_chars: function() {
-      if (promptArray[1] === "y") {
-        Array.prototype.push.apply(pwdArray, pwdPoss.special_chars);
-      }
-    },
-
-    num_chars: function() {
-      if (promptArray[2] === "y") {
-        Array.prototype.push.apply(pwdArray, pwdPoss.num_chars);
-      }
-    },
-
-    lower_chars: function() {
-      if (promptArray[3] === "y") {
-        Array.prototype.push.apply(pwdArray, pwdPoss.lower_chars);
-      }
-    },
-
-    upper_chars: function() {
-      if (promptArray[4] === "y") {
-        Array.prototype.push.apply(pwdArray, pwdPoss.upper_chars);
+  function pwdArrayPush() {
+    for (var i = 1; i < pwdkeys.length+1; i++) {
+      if (promptArray[i] === "y") {
+        Array.prototype.push.apply(pwdArray, pwdPoss[pwdkeys[(i - 1)]]);
       }
     }
-  };
+  }
 
-  // RUN ABOVE FUNCTIONS
-  pwdChoice.special_chars();
-  pwdChoice.num_chars();
-  pwdChoice.lower_chars();
-  pwdChoice.upper_chars();
+  pwdArrayPush();
 
   // CREATE ARRAY WHERE FINAL PASSWORD WILL GENERATE INTO
   var pwdGen = [];
